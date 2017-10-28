@@ -1,12 +1,14 @@
 package com.entradas.test.business.students.impl;
 
-import com.entradas.test.business.common.DataOutDto;
 import com.entradas.test.business.students.IStudentsBusiness;
 import com.entradas.test.business.students.dto.ListStudentsDto;
 import com.entradas.test.business.students.dto.StudentsDto;
-import com.entradas.test.repository.students.StudentsRepository;
-import com.entradas.test.repository.students.dto.Students;
+import com.entradas.test.integration.dto.Students;
+import com.entradas.test.integration.repository.students.StudentsRepository;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,11 @@ import java.util.List;
 /**
  * Created by muerte on 28/10/17.
  */
+@Data
 @Service
 public class StudentsBusinessImpl implements IStudentsBusiness {
 
+    @Autowired
     private StudentsRepository studentsRepository;
 
     @Override
@@ -46,6 +50,7 @@ public class StudentsBusinessImpl implements IStudentsBusiness {
         studentsDto.setId(students.getId());
         studentsDto.setPassword(students.getPassword());
         studentsDto.setToken(students.getToken());
+        studentsDto.setUser(students.getUser());
 
         return studentsDto;
     }
@@ -64,8 +69,8 @@ public class StudentsBusinessImpl implements IStudentsBusiness {
         studentsDto.setLastName(students.getLastName());
         studentsDto.setId(students.getId());
         studentsDto.setPassword(students.getPassword());
-        studentsDto.setToken(students.getToken());
-
+        studentsDto.setToken(DigestUtils.md5DigestAsHex(students.getFirstName().getBytes()).toUpperCase());
+        studentsDto.setUser(students.getUser());
         return studentsDto;
     }
 }
