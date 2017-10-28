@@ -1,4 +1,4 @@
-package com.umbrella.tpv.war.configuration;
+package com.entradas.test.war.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.entradas.test.services"))
                 .paths(PathSelectors.any())
                 .build();
     }
