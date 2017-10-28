@@ -1,6 +1,8 @@
 package com.entradas.test.business.students.impl;
 
+import com.entradas.test.business.common.DataOutDto;
 import com.entradas.test.business.students.IStudentsBusiness;
+import com.entradas.test.business.students.dto.ListStudentsDto;
 import com.entradas.test.business.students.dto.StudentsDto;
 import com.entradas.test.repository.students.StudentsRepository;
 import com.entradas.test.repository.students.dto.Students;
@@ -18,7 +20,7 @@ public class StudentsBusinessImpl implements IStudentsBusiness {
     private StudentsRepository studentsRepository;
 
     @Override
-    public List<StudentsDto> retrieveStudents(String name) {
+    public ListStudentsDto retrieveStudents(String name) {
         return mapperStudents(studentsRepository.findByLastName(name));
     }
 
@@ -27,11 +29,13 @@ public class StudentsBusinessImpl implements IStudentsBusiness {
         studentsRepository.save(mapperStudentsDto(studentsDto));
     }
 
-    private List<StudentsDto> mapperStudents(List<Students> studentsList) {
+    private ListStudentsDto mapperStudents(List<Students> studentsList) {
 
+        ListStudentsDto listStudentsDto = new ListStudentsDto();
         List<StudentsDto> responseList = new ArrayList<>();
         studentsList.stream().forEach(students -> responseList.add(mapperStudents(students)));
-        return responseList;
+        listStudentsDto.setStudentsDtoList(responseList);
+        return listStudentsDto;
     }
 
     private StudentsDto mapperStudents(Students students) {

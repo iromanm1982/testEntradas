@@ -1,4 +1,4 @@
-package com.umbrella.tpv.businness.common;
+package com.entradas.test.business.common;
 
 import lombok.Data;
 
