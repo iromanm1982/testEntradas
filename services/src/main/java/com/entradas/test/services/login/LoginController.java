@@ -1,4 +1,4 @@
-package com.entradas.test.services.students;
+package com.entradas.test.services.login;
 
 import com.entradas.test.business.common.ResultOutDto;
 import com.entradas.test.business.students.IStudentsBusiness;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController()
 @RequestMapping(value="/students")
-public class StudentsController {
+public class LoginController {
 
     @Autowired
     private IStudentsBusiness studentsBusiness;

@@ -4,14 +4,17 @@ import com.entradas.test.business.common.ResultOutDto;
 import com.entradas.test.business.students.IStudentsBusiness;
 import com.entradas.test.business.students.dto.StudentsDto;
 import com.entradas.test.services.common.GenericOutDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by muerte on 28/10/17.
  */
-@RestController(value="/students")
+@RestController()
+@RequestMapping(value="/students")
 public class StudentsController {
 
+    @Autowired
     private IStudentsBusiness studentsBusiness;
 
     @RequestMapping(method = RequestMethod.POST)
@@ -24,8 +27,9 @@ public class StudentsController {
     @RequestMapping(method =  RequestMethod.GET)
     public GenericOutDto retrieveStudents(@RequestParam(name = "name") String name){
         GenericOutDto response = new GenericOutDto();
-        response.with(studentsBusiness.retrieveStudents(name))
-        return null;
+        response.with(studentsBusiness.retrieveStudents(name));
+
+        return response;
     }
 
 }
