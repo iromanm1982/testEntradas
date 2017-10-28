@@ -29,6 +29,11 @@ public class StudentsBusinessImpl implements IStudentsBusiness {
     }
 
     @Override
+    public StudentsDto retrieveStudent(String user, String password){
+        return mapperStudents(studentsRepository.findByUserAndPassword(user, password));
+    }
+
+    @Override
     public void createStudents(StudentsDto studentsDto) {
         studentsRepository.save(mapperStudentsDto(studentsDto));
     }
@@ -41,6 +46,8 @@ public class StudentsBusinessImpl implements IStudentsBusiness {
         listStudentsDto.setStudentsDtoList(responseList);
         return listStudentsDto;
     }
+
+
 
     private StudentsDto mapperStudents(Students students) {
 

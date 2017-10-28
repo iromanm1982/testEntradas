@@ -11,25 +11,22 @@ import org.springframework.web.bind.annotation.*;
  * Created by muerte on 28/10/17.
  */
 @RestController()
-@RequestMapping(value="/students")
+@RequestMapping(value="/login")
 public class LoginController {
 
     @Autowired
     private IStudentsBusiness studentsBusiness;
 
     @RequestMapping(method = RequestMethod.POST)
-    public GenericOutDto createStudents(@RequestBody StudentsDto studentsDto){
+    public GenericOutDto createStudents(@RequestParam(name = "user") String user,@RequestParam(name = "password") String password ){
         GenericOutDto response = new GenericOutDto();
-        studentsBusiness.createStudents(studentsDto);
-        return response.with(ResultOutDto.created());
+        return response.with(studentsBusiness.retrieveStudent(user, password));
     }
 
-    @RequestMapping(method =  RequestMethod.GET)
+    @RequestMapping(method =  RequestMethod.DELETE)
     public GenericOutDto retrieveStudents(@RequestParam(name = "name") String name){
-        GenericOutDto response = new GenericOutDto();
-        response.with(studentsBusiness.retrieveStudents(name));
 
-        return response;
+        return null;
     }
 
 }

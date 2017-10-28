@@ -10,5 +10,7 @@ public interface IStudentsBusiness {
 
     ListStudentsDto retrieveStudents(String name);
 
+    StudentsDto retrieveStudent(String user, String password);
+
     void createStudents(StudentsDto students);
 }
