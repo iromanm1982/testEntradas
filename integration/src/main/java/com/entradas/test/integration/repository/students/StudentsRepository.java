@@ -13,4 +13,7 @@ import java.util.List;
 public interface StudentsRepository extends JpaRepository<Students, Long> {
 
     List<Students> findByLastName(String lastName);
+
+    Students findByUserAndPassword(String user, String password);
 }
+
