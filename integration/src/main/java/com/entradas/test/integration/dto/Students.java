@@ -1,16 +1,18 @@
-package com.entradas.test.repository.students.dto;
+package com.entradas.test.integration.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by muerte on 28/10/17.
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(schema = "entradas")
 @Entity
 public class Students {
     @Id
