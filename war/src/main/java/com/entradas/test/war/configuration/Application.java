@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 
 
 @Configuration
-@PropertySource("file:/var/entradas/test/properties/desa/enviroment.yaml")
+@PropertySource("file:/var/entradas/test/properties/desa/environment.yaml")
 @EnableAutoConfiguration
 @ComponentScan("com.entradas.test")
 public class Application extends SpringBootServletInitializer {
